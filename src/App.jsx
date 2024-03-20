@@ -5,22 +5,22 @@ import { useSelector } from "react-redux";
 function App() {
   const sostoyanie = useSelector((state) => console.log(state));
   // console.log(sostoyanie);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   const handlePlus = () => {
     setCount(count + 1);
   };
-  const handleMinus = () => {
-    setCount(count - 1);
-  };
+  // const handleMinus = () => {
+  //   setCount(count - 1);
+  // };
 
   return (
     <>
-      <p>{count}</p>
+      {/* <p>{count}</p> */}
       <button onClick={handlePlus}>PLUS</button>
-      <button onClick={handleMinus} disabled={count === 0}>
+      {/* <button onClick={handleMinus} disabled={}>
         MINUS
-      </button>
+      </button> */}
       <TableForm />
     </>
   );

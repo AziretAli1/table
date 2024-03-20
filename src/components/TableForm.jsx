@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { handleInc } from "./store/table-slice";
+import { handleDisabled, handleInc } from "./store/table-slice";
 import { handleDec } from "./store/table-slice";
 export const TableForm = () => {
   const { tables } = useSelector((state) => state.table);
@@ -10,11 +10,13 @@ export const TableForm = () => {
   const handleIncrement = (id) => {
     dispatch(handleInc(id));
   };
-  // console.log(tableData);
   const handleDecrement = (id) => {
     dispatch(handleDec(id));
   };
 
+  const isDisabled = (count) => {
+    dispatch(handleDisabled(count));
+  };
   return (
     <StyledBlok>
       <thead>
@@ -38,7 +40,12 @@ export const TableForm = () => {
               <button onClick={() => handleIncrement(item.id)}>+</button>
             </StyledaTd>
             <StyledaTd>
-              <button onClick={() => handleDecrement(item.id)}>-</button>
+              <button
+                onClick={() => handleDecrement(item.id)}
+                disabled={isDisabled(item.count)}
+              >
+                -
+              </button>
             </StyledaTd>
             <StyledaTd>{item.count}</StyledaTd>
           </tr>

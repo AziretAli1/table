@@ -33,9 +33,21 @@ export const tableSlice = createSlice({
           };
         }
         return item;
-        // console.log(newId);
+      });
+    },
+    handleDisabled: (state, action) => {
+      const disId = action.payload;
+      state.tables = state.tables.map((item) => {
+        // const isDisabled = (count) => count === 0;
+        if (item.id === disId && item.count === 0) {
+          return {
+            ...item,
+            count: true,
+          };
+        }
+        return item;
       });
     },
   },
 });
-export const { handleInc, handleDec } = tableSlice.actions;
+export const { handleInc, handleDec, handleDisabled } = tableSlice.actions;
